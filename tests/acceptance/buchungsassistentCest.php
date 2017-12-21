@@ -40,10 +40,40 @@ class buchungsassistentCest
         $I->waitForText('0815');
         $I->click('body > ul.ui-autocomplete > li > a > span');
 
-        $inputWeiter = '#dateDataForm > div > div.ym-gl.ba-middleRight > div > div.ym-grid.ba-CategoryContainer > div.ym-grid.ym-equalize.ba-footmenuContainer > table > tbody > tr > td.ba-tdBtnFtLast > input';
-        $I->click($inputWeiter);
+        $classButtonNext = ".btnNext";
+        $I->click($classButtonNext);
 
         $I->waitForText('Termindetails');
+
+        $I->click($classButtonNext);
+
+        $ressourceKategorieGetraenke = "#expandImageKategorie_2";
+        $I->click($ressourceKategorieGetraenke);
+        $I->wantTo("Have some Cola!!!!");
+        $I->waitForText("Cola");
+        $checkboxRessourceCola = "#anfVeraCheck_8_3neu";
+        $I->click($checkboxRessourceCola);
+        $spinnerRessourceCola = "#dyField_8_3neu_anfVera";
+        $I->fillField($spinnerRessourceCola, 10);
+
+        $copyButton = "#tr_dyField_8_3neu_2 > img:nth-child(2)";
+        $I->click($copyButton);
+
+        $checkboxRessourceColaCopy = "#dyField_8_4neu_anfVera";
+        $I->waitForElement($checkboxRessourceColaCopy);
+        $I->fillField($checkboxRessourceColaCopy, 5);
+
+        $I->click($classButtonNext);
+
+
+        $selectorTitleOnConfirmationpage = "div.ym-grid:nth-child(21) > div:nth-child(2)";
+        $titleOnPage = $I->grabTextFrom($selectorTitleOnConfirmationpage);
+        $I->assertEquals($anlass, $titleOnPage);
+
+        $inputButtonSave =".btnSave";
+        $I->click($inputButtonSave);
+
+        $I->wait(5);
 
     }
 }
