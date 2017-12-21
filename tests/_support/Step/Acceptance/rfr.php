@@ -37,6 +37,13 @@ class rfr extends \AcceptanceTester
 
         }
     }
+    public function logout()
+    {
+        $I = $this;
+
+        $I->see("Logout");
+        $I->click("Logout");
+    }
 
     public function chooseDate()
     {
