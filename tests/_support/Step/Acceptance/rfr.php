@@ -8,10 +8,13 @@ class rfr extends \AcceptanceTester
 
     public function loginAsCodeception()
     {
+        $this->login("codeception", "codeception");
+    }
+
+    public function login($username, $password)
+    {
         $page = page::class;
         $I = $this;
-        $username = 'codeception';
-        $password = 'codeception';
 
         $userInput = $page::$loginUsername;
         $passwordInput = $page::$loginPassword;
